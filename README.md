@@ -1,6 +1,12 @@
 # Lita_Project_CustomerData
 This is where the customer data for my final project is documented at the end of Lita training
 
+### Table of Content
+- [Project Overview](#project-overview)
+- [Data Source](#data-source)
+- [Tools and Techniques](#tools-and-techniques)
+- [Steps Taken](#steps-taken)
+
 ### Project Overview
 This project demonstrates the workflow for analyzing a dataset that contains customer data for a subscription service using Microsoft Excel, SQL Server and PowerBi. The goal of the project is to showcase how the data can be analyzed, and visualized to identify segments and trends in order to understand the behaviour of subscribers with the final aim of creating an interactive PowerBi dashboard that represents the analysis.
 
@@ -98,7 +104,8 @@ select sum(case when canceled = 0 then 1 else 0 end) as activesubscriptions,
 sum(case when canceled = 1 then 1 else 0 end) as canceledsubscriptions
 from CustomerData
 ```
-
+#### Summary
+From the analysis carried out it was noted that basic plan had the highest number of subscribers. There was no customer who had a subscription plan longer than 12 months or any who had canceled their subsription within 6 months. The subscription plan that generated the highest revenue for the service provider was the basic plan.
 
 
   
