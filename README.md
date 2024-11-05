@@ -13,3 +13,11 @@ The customer data for the subscription service was provided by the facilitators 
 - Power BI: This was used to create interactive visualizations and dashboards that provide a summary of the data analysis results.
 
 ### Steps Taken
+1. Data Cleaning
+- Removing Duplicates: The data was cleaned using excel to remove duplicates. There were 75,000 rows before the duplicates were removed resulting in 33,788 rows left.
+- Pivot Tables: The data was summarized using pivot tables to find the subscription pattern. In order to get the subscription pattern, the subscription frequency was found to know which of the plans was subscribed to the most. The image shows that the basic plan was subscribed to the most.
+  ![image](https://github.com/user-attachments/assets/6f096e83-be1e-48ed-83b4-2958076c45da)
+
+2. Data Analysis
+-
+  
