@@ -39,7 +39,67 @@ The customer data for the subscription service was provided by the facilitators 
 #### Summary
 From the analysis performed, it was discovered that the average subscription duration was 365 days which is a year. So the customers subscription usually run for an entire year before subscribing again. The most popular subscription plan is the basic plan.
 
-- SQL 
+- SQL: The data was imported from excel into sql by converting the excel file into csv file. After the data was imported, there were several null values values so that was removed first using the query below.
+
+``` SQL
+delete from customerdata
+where customerid is null
+```
+After cleaning the data, different analysis was performed on the dataset.
+
+  -Total number of customers from each region
+``` SQL
+select region, count(distinct customerid) as TotalCustomers
+from CustomerData
+group by region
+```
+  -Most popular subscription type by the number of customers
+``` SQL
+select top 1
+subscriptiontype, count(distinct customerid) as Customercount
+from CustomerData
+group by SubscriptionType
+order by Customercount desc
+```
+  -Canceled subscription within 6 months
+``` SQL
+select customerid, customername
+from CustomerData
+where canceled = 1 and DATEDIFF(month, subscriptionstart,subscriptionend)<= 6;
+```
+  -Average subscription duration for all customers
+``` SQL
+select AVG(datediff(month, subscriptionstart, subscriptionend)) as AvgSubDuration
+from CustomerData
+```
+  -Customers with subscriptions longer than 12 months
+``` SQL
+select customerid, customername
+from CustomerData
+where datediff(month, subscriptionstart, subscriptionend) > 12
+```
+  -Total revenue by subscription type
+``` SQL
+select subscriptiontype, sum(revenue) as totalrevenue
+from CustomerData
+group by SubscriptionType
+```
+  -Top 3 regions by subscription cancellations
+``` SQL
+select top 3 region, count(customerid) as Cancellations
+from CustomerData
+where canceled = 1
+group by region
+order by cancellations desc
+```
+  -Total number of active and canceled subscriptions
+``` SQL
+select sum(case when canceled = 0 then 1 else 0 end) as activesubscriptions,
+sum(case when canceled = 1 then 1 else 0 end) as canceledsubscriptions
+from CustomerData
+```
+
+
 
   
 
